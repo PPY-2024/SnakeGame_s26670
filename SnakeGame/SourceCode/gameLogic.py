@@ -9,13 +9,14 @@ DIRECTIONS = {
     'right': (1, 0)
 }
 
-SNAKE_DEFAULT_DIRECTION = DIRECTIONS['up']
+SNAKE_DEFAULT_DIRECTION = DIRECTIONS['down']
 SNAKE_DEFAULT_SIZE = 3
 
 
-class Game:
+class GameLogic:
     def __init__(self):
         self.active = True
+        self.size = FIELD_SIZE
         self.snake = Snake()
         self.food = Food()
         self.score = 0
@@ -55,9 +56,8 @@ class Game:
         else:
             if (self.snake.coordinates[0][0] == self.food.coordinates[0]
                     and self.snake.coordinates[0][1] == self.food.coordinates[1]):
-
                 self.score += 1
-                self.food.generate_coordinates()
+                self.food.generate_coordinates(self.snake.coordinates)
             else:
                 del self.snake.coordinates[-1]
 
@@ -85,9 +85,12 @@ class Snake:
 
 class Food:
     def __init__(self):
-        self.coordinates = ()
-        self.generate_coordinates()
+        self.coordinates = (FIELD_SIZE // 2, FIELD_SIZE // 2)
 
-    def generate_coordinates(self):
-        self.coordinates = (random.randint(0, FIELD_SIZE - 1),
-                            random.randint(0, FIELD_SIZE - 1))
+    def generate_coordinates(self, snake_coordinates):
+        apple_generated_successfully = False
+        while not apple_generated_successfully:
+            self.coordinates = (random.randint(0, FIELD_SIZE - 1),
+                                random.randint(0, FIELD_SIZE - 1))
+            if self.coordinates not in snake_coordinates:
+                apple_generated_successfully = True

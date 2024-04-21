@@ -3,12 +3,12 @@ from SnakeGame.SourceCode import gameLogic
 
 
 def test_initial_score():
-    game = gameLogic.Game()
+    game = gameLogic.GameLogic()
     assert game.score == 0
 
 
 def test_score_increment_on_food_eaten():
-    game = gameLogic.Game()
+    game = gameLogic.GameLogic()
     initial_score = game.score
 
     game.snake.coordinates = [(0, 0)]
@@ -20,7 +20,7 @@ def test_score_increment_on_food_eaten():
 
 
 def test_score_not_incremented_on_move():
-    game = gameLogic.Game()
+    game = gameLogic.GameLogic()
     initial_score = game.score
 
     game.snake.coordinates = [(0, 0)]
@@ -32,7 +32,7 @@ def test_score_not_incremented_on_move():
 
 
 def test_score_not_incremented_on_collision():
-    game = gameLogic.Game()
+    game = gameLogic.GameLogic()
     initial_score = game.score
 
     game.snake.coordinates = [(0, 0)]

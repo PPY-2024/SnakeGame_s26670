@@ -4,7 +4,7 @@ from SnakeGame.SourceCode import gameLogic
 
 def test_all_directions():
     for direction in gameLogic.DIRECTIONS:
-        game = gameLogic.Game()
+        game = gameLogic.GameLogic()
         tested_direction = gameLogic.DIRECTIONS[direction]
 
         test_pos = (gameLogic.FIELD_SIZE // 2, gameLogic.FIELD_SIZE // 2)

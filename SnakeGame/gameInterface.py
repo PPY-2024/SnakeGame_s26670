@@ -53,22 +53,26 @@ game_font = pygame.font.Font(None, 36)
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, tick)
 
+last_direction = gameLogic.snake.direction
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         if event.type == SCREEN_UPDATE:
+            if last_direction != gameLogic.snake.direction:
+                gameLogic.snake.change_direction(last_direction)
             gameInterface.update()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                gameLogic.snake.change_direction((0, -1))
+                last_direction = (0, -1)
             if event.key == pygame.K_RIGHT:
-                gameLogic.snake.change_direction((1, 0))
+                last_direction = (1, 0)
             if event.key == pygame.K_DOWN:
-                gameLogic.snake.change_direction((0, 1))
+                last_direction = (0, 1)
             if event.key == pygame.K_LEFT:
-                gameLogic.snake.change_direction((-1, 0))
+                last_direction = (-1, 0)
 
     screen.fill((200, 200, 70))
     gameInterface.draw()

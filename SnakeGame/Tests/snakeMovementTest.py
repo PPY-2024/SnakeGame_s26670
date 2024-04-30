@@ -1,5 +1,4 @@
-import pytest
-from SnakeGame.SourceCode import gameLogic
+from SnakeGame import gameLogic
 
 
 def test_all_directions():

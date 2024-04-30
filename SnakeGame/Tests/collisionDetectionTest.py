@@ -1,5 +1,4 @@
-import pytest
-from SnakeGame.SourceCode import gameLogic
+from SnakeGame import gameLogic
 
 
 def test_collision_with_boundary():

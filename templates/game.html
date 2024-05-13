@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Snake Game</title>
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(10, 20px);
+    grid-template-rows: repeat(10, 20px);
+  }
+  .cell {
+    width: 20px; height: 20px;
+    border: 1px solid #ccc;
+  }
+  .snake { background-color: green; }
+  .food { background-color: red; }
+</style>
+</head>
+<body>
+<div id="score">Score: 0</div>
+
+<div class="grid" id="gameGrid"></div>
+<script>
+let gameActive = true;
+let lastDirection = 'down';
+
+document.addEventListener('keydown', (e) => {
+    let keyMap = {
+        'ArrowUp': 'up',
+        'ArrowDown': 'down',
+        'ArrowLeft': 'left',
+        'ArrowRight': 'right',
+        'Escape': 'pause'  // Use the Escape key to pause or resume the game.
+    };
+    if (keyMap[e.key]) {
+        if (keyMap[e.key] === 'pause') {
+            gameActive = !gameActive; // Toggle game active state.
+            if (!gameActive) {
+                clearInterval(gameInterval);
+            } else {
+                gameInterval = startGameInterval();
+            }
+        } else if (gameActive) {
+            lastDirection = keyMap[e.key];
+            // makeMove(keyMap[e.key]);
+        }
+    }
+});
+
+
+function makeMove(direction) {
+    fetch('/game/move', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({direction: direction})
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.active) {
+                window.location.href = '/gameOver'
+                clearInterval(gameInterval);
+            }
+            updateGameState();
+        });
+}
+function updateGameState() {
+    fetch('/game/state')
+    .then(response => response.json())
+    .then(data => {
+        let grid = document.getElementById('gameGrid');
+        grid.innerHTML = '';
+        for (let y = 0; y < 10; y++) {
+            for (let x = 0; x < 10; x++) {
+                let cell = document.createElement('div');
+                cell.className = 'cell';
+                if (data.snake.some(part => part[0] === x && part[1] === y)) {
+                    cell.classList.add('snake');
+                }
+                if (data.food[0] === x && data.food[1] === y) {
+                    cell.classList.add('food');
+                }
+                grid.appendChild(cell);
+            }
+        }
+        document.getElementById('score').textContent = 'Score: ' + data.score;
+    });
+}
+
+function startGameInterval() {
+    return setInterval(() => {
+        if (gameActive) {
+            makeMove(lastDirection); // Change this as needed to handle current direction or last pressed key direction.
+        }
+    }, 250); // Moves every 250 milliseconds
+}
+
+let gameInterval = startGameInterval();
+</script>
+
+</body>
+</html>

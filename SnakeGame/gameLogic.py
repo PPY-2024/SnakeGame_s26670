@@ -20,6 +20,15 @@ class GameLogic:
         self.snake = Snake()
         self.food = Food()
         self.score = 0
+        self.name = ""
+
+    def setup(self):
+        self.active = True
+        self.size = FIELD_SIZE
+        self.snake = Snake()
+        self.food = Food()
+        self.score = 0
+        self.name = ""
 
     def check_collisions(self):
         return self.check_boundary_collision() or self.check_body_collision()

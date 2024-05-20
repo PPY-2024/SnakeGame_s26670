@@ -30,8 +30,8 @@ class GameInterface:
             pygame.draw.rect(screen, 'green', part_rect)
 
         score_surface = game_font.render(str(self.game.score), True, (255, 255, 255))
-        score_x = int(cell_size * cell_number - 20)
-        score_y = int(cell_size * cell_number - 10)
+        score_x = int(20)
+        score_y = int(10)
         score_rect = score_surface.get_rect(center=(score_x, score_y))
         screen.blit(score_surface, score_rect)
 
@@ -40,7 +40,7 @@ pygame.init()
 gameLogic = gameLogic.GameLogic()
 gameInterface = GameInterface(gameLogic)
 
-tick = 1000
+tick = 500
 framerate = 60
 cell_size = 50
 cell_number = gameLogic.size

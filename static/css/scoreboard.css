@@ -1,0 +1,88 @@
+
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+/* Back to Menu Button */
+#back-to-menu {
+    position: fixed; /* Fix position relative to the viewport */
+    top: 20px; /* 20px from the top */
+    left: 20px; /* 20px from the left */
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+#back-to-menu:hover {
+    background-color: #555;
+}
+
+
+/* Scoreboard Styles */
+#scoreboard {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+#scoreboard h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center; /* Ensure the <h1> header is centered */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #f4f4f4;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    #scoreboard {
+        width: 90%;
+        padding: 10px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+}
+

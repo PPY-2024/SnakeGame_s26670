@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Over</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/gameover.css') }}">
+</head>
+<body>
+
+    <div id="game-over-container">
+        <div id="game-over-content">
+            <h1>Game Over! </h1>
+            <p>Your Score: {{ score }}</p>
+            <button id="back-to-menu" onclick="location.href='/menu';">Back to Menu</button>
+        </div>
+    </div>
+<!--<div class="center-container">-->
+<!--    <h1>Game Over!</h1>-->
+<!--    <br>-->
+<!--    <h1>Your Score: {{ score }}</h1>-->
+<!--    <br>-->
+<!--    <button onclick="location.href='/menu';">Back to Menu</button>-->
+<!--</div>-->
+</body>
+</html>

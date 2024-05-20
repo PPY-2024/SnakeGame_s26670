@@ -1,18 +1,6 @@
-/* General body styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
 h1 {
     color: #333;
+    text-align: center;
 }
 
 /* Menu container styling */
@@ -25,31 +13,12 @@ h1 {
     width: 300px;
 }
 
-/* Button styles */
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 16px;
-    color: white;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-
 body {
     font-family: Arial, sans-serif; /* Sets the font for the page */
     background-color: #f4f4f9; /* Light grey background */
     padding: 20px; /* Adds space around the content */
 }
+
 form {
     background-color: #ffffff; /* White background for the form */
     padding: 20px;
@@ -62,28 +31,38 @@ label {
     font-size: 16px; /* Larger font size for readability */
     color: #333333; /* Dark grey color for the text */
 }
+/*input[type="text"] {*/
+/*    width: 100%; !* Full width of the form *!*/
+/*    padding: 10px;*/
+/*    margin-top: 8px;*/
+/*    margin-bottom: 16px;*/
+/*    border: 1px solid #cccccc; !* Light grey border *!*/
+/*    border-radius: 4px; !* Rounded borders for the input *!*/
+/*}*/
+
 input[type="text"] {
-    width: 100%; /* Full width of the form */
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #cccccc; /* Light grey border */
-    border-radius: 4px; /* Rounded borders for the input */
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
+
 input[type="submit"] {
     background-color: #007BFF; /* Blue background */
     color: white;
     border: none;
     padding: 10px 20px;
     text-transform: uppercase; /* Makes the text uppercase */
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 16px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
 }
 input[type="submit"]:hover {
     background-color: #0056b3; /* Darker blue when hovered */
 }
 
-/* Responsive design adjustments */
+
 @media (max-width: 600px) {
     #menu {
         width: 80%;

@@ -3,27 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Snake Game</title>
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(10, 20px);
-    grid-template-rows: repeat(10, 20px);
-  }
-  .cell {
-    width: 20px; height: 20px;
-    border: 1px solid #ccc;
-  }
-  .snake { background-color: green; }
-  .food { background-color: red; }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/game.css') }}">
+<!--<style>-->
+<!--  .grid {-->
+<!--    display: grid;-->
+<!--    grid-template-columns: repeat(10, 20px);-->
+<!--    grid-template-rows: repeat(10, 20px);-->
+<!--  }-->
+<!--  .cell {-->
+<!--    width: 20px; height: 20px;-->
+<!--    border: 1px solid #ccc;-->
+<!--  }-->
+<!--  .snake { background-color: green; }-->
+<!--  .food { background-color: red; }-->
+<!--</style>-->
 </head>
 <body>
-<div id="score">Score: 0</div>
+
+<div id="game-container">
+<div id="score">Score: {{ score }}</div>
 
 <div class="grid" id="gameGrid"></div>
+</div>
 <script>
 let gameActive = true;
 let lastDirection = 'down';
+
 
 document.addEventListener('keydown', (e) => {
     let keyMap = {
@@ -66,7 +72,7 @@ function makeMove(direction) {
             updateGameState();
         });
 }
-function updateGameState() {
+function updateGameState(grid_size) {
     fetch('/game/state')
     .then(response => response.json())
     .then(data => {

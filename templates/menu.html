@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Menu</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>SnakeGame s26670</h1>
-    <div id="menu">
+<!--    <h1>SnakeGame s26670</h1>-->
+    <div class="center-container">
+        <div id="menu">
+            <form action="/game" method="POST">
+                <label for="player_name">Enter your name:</label><br>
+                <input type="text" id="player_name" name="player_name" required><br><br>
+                <input type="submit" value="Start Game">
+            </form>
 
-        <form action="/game" method="POST">
-            <label for="player_name">Enter your name:</label><br>
-            <input type="text" id="player_name" name="player_name" required><br><br>
-            <input type="submit" value="Start Game">
-        </form>
-
-        <button onclick="location.href='/scoreboard';">Scoreboard</button>
+            <button onclick="location.href='/scoreboard';">Scoreboard</button>
+        </div>
     </div>
+<footer> SnakeGame s26670 </footer>
 </body>
 </html>

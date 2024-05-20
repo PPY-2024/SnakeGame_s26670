@@ -31,24 +31,3 @@ jobs:
       - name: Deploy to server
         run: |
           docker-compose -f docker-compose.yml up -d
-
-#
-#      - name: Build and push Docker image
-#        uses: docker/build-push-action@v2
-#        with:
-#          context: .
-#          push: true
-#          tags: ${{ secrets.DOCKER_USERNAME }}/snake-game:latest
-#
-#      - name: Deploy to Server
-#        uses: easingthemes/ssh-deploy@v2.1.5
-#        env:
-#          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-#          ARGS: "-v"
-#          SOURCE: "docker-compose.yml"
-#          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-#          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-#          TARGET: ${{ secrets.REMOTE_PATH }}
-#
-#      - name: Restart Docker Compose on server
-#        run: ssh ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ${{ secrets.REMOTE_PATH }} && docker-compose down && docker-compose up -d"
